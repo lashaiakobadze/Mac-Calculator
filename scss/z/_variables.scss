@@ -1,0 +1,16 @@
+$colors: (
+    btn-color1: rgb(124, 122, 123),
+    btn-color2: rgb(242, 160, 60),
+    btn-color3: rgb(99, 97, 98),
+    disply-color: rgb(81, 79, 80),
+    font-color1: #ffffff,
+    font-color2: #0b0b0b
+);
+
+@function color($color-name) {
+    @return map-get($colors, $color-name);
+};
+
+          
+
+

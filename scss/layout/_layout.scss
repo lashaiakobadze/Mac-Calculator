@@ -1,0 +1,17 @@
+.calculator { 
+    width: 40vh;
+    height: 60vh;
+    margin: auto;
+    margin-top: 20vh;
+    border: 0.1px solid color(disply-color);
+    // box-shadow: 0px 0px 20px 0px #aaa;
+}
+
+img {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    object-fit: cover;
+}

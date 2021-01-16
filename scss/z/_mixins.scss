@@ -1,0 +1,11 @@
+@mixin  flexPosition($justCont: center, $alignIte: center) {
+    display: flex;
+    justify-content: $justCont;
+    align-items: $alignIte;
+}
+
+@mixin bounce {
+    height: 55%;
+    width: 18%;
+    border-radius: 50%;
+}
