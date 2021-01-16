@@ -110,6 +110,21 @@ const calculator = function() {
         previousAns = answer.toString();
     }
 
+    const back = function(e){
+        if( e.key === 'Backspace'){
+            if (display.value != "0" && formula.value != "") {
+                if (display.value.length == 1 && formula.value.length == 1){
+                  formula.value = "";
+                  display.value = 0;
+                } else {
+                    formula.value = formula.value.slice(0,-1);
+                    display.value = display.value.slice(0,-1);
+                }
+            }
+        }
+    }
+
+    document.addEventListener('keydown', back);
     number.forEach(btn => btn.addEventListener('click', insert)); 
     operator.forEach(operator => operator.addEventListener('click', operatorOf));
     clean.addEventListener('click', cleanContent);
