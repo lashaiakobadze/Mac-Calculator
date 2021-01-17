@@ -14,12 +14,12 @@
         &-color {
             height: 100%;
             width: 30%;
-           @include flexPosition(space-around);
+            @include flexPosition(space-around);
             
             .color-1 {
                 @include bounce;
                 background-color: #fc5753;
-            }
+            }   
 
             .color-2 {
                 @include bounce;

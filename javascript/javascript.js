@@ -17,20 +17,20 @@ const calculator = function() {
     let start = 0; 
     display.value = 0;
 
-
     const insert = function(e) {
+        let insertNum = e.target.value;
         if (calculated == true) {
-            formula.value = previousAns + e.target.value;
-            display.value = previousAns + e.target.value;
+            formula.value = previousAns + insertNum;
+            display.value = previousAns + insertNum;
         } else if (isNaN(display.value) == true) {
-            formula.value += e.target.value; 
-            display.value = e.target.value;
+            formula.value += insertNum; 
+            display.value = insertNum;
         } else if (display.value != "0" && isNaN(display.value) == false) {
-            formula.value += e.target.value;
-            display.value += e.target.value;
-        } else if (display.value == "0" && e.target.value != 0) {
-            formula.value += e.target.value;
-            display.value = e.target.value;
+            formula.value += insertNum;
+            display.value += insertNum;
+        } else if (display.value == "0" && insertNum != 0) {
+            formula.value += insertNum;
+            display.value = insertNum;
             }
         calculated = false;
         start = 0;
@@ -110,21 +110,68 @@ const calculator = function() {
         previousAns = answer.toString();
     }
 
-    const back = function(e){
-        if( e.key === 'Backspace'){
-            if (display.value != "0" && formula.value != "") {
-                if (display.value.length == 1 && formula.value.length == 1){
-                  formula.value = "";
-                  display.value = 0;
-                } else {
-                    formula.value = formula.value.slice(0,-1);
-                    display.value = display.value.slice(0,-1);
-                }
+    const back = function(e) {
+        if (display.value != "0" && formula.value != "") {
+            if (display.value.length == 1 && formula.value.length == 1){
+                formula.value = "";
+                display.value = 0;
+            } else {
+                formula.value = formula.value.slice(0,-1);
+                display.value = display.value.slice(0,-1);
             }
         }
     }
 
-    document.addEventListener('keydown', back);
+    // Actions with the keyboard
+    const numberKey = function(e) {
+        // Maybe do it with a switch case
+        if(e.key == '1' || e.key == '2' || e.key == '3' || e.key == '4' || 
+        e.key == '5' || e.key == '6' || e.key == '7' || e.key == '8' ||
+        e.key == '9' || e.key == '0' || e.key == '.') {
+            if (calculated == true) {
+                formula.value = previousAns + e.key;
+                display.value = previousAns + e.key;
+            } else if (isNaN(display.value) == true) {
+                formula.value += e.key; 
+                display.value = e.key;
+            } else if (display.value != "0" && isNaN(display.value) == false) {
+                formula.value += e.key;
+                display.value += e.key;
+            } else if (display.value == "0" && e.key != 0) {
+                formula.value += e.key;
+                display.value = e.key;
+                }
+            calculated = false;
+            start = 0;
+        } else if(e.key == '/' || e.key == '*' || e.key == '-' || e.key == '+') {
+            let op = e.key; 
+            let lastChar = formula.value[formula.value.length-1];
+            let origin = display.value;
+            if (start < 2) { 
+            display.value = op;
+            if (calculated == true) {
+            formula.value = previousAns+op;1
+            } else if (Number(origin) != NaN) {
+                formula.value += op;
+                } else if (op = "-" && /[+/*]/.test(lastChar) == true) {
+                formula.value += op;           
+                }
+                calculated = false;
+                start += 1;
+            }
+        } else if (e.key == '%') {
+            percentOf();
+        }  else if(e.key == 'Enter') {
+            equalOf();
+        } else if (e.key == 'Backspace') {
+            back();
+        } else if (e.key == '_') {
+            negativeNumber();
+        }
+    }
+
+    document.addEventListener('keydown', numberKey);
+    // Actions by Dom
     number.forEach(btn => btn.addEventListener('click', insert)); 
     operator.forEach(operator => operator.addEventListener('click', operatorOf));
     clean.addEventListener('click', cleanContent);
