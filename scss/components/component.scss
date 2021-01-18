@@ -16,29 +16,14 @@
             width: 30%;
             @include flexPosition(space-around);
             
-            .color-1 {
-                @include bounce;
-                background-color: #fc5753;
-            }   
+            $socialMediaColors: 1 #fc5753, 2 #fdbb40, 3 #34c84a;
 
-            .color-2 {
-                @include bounce;
-                background-color: #fdbb40;
+            @each $color in $socialMediaColors {
+                .bounce-color:nth-child(#{nth($color, 1)}) {
+                    @include bounce;
+                    background-color: nth($color, 2);                    
+                }
             }
-
-            .color-3 {
-                @include bounce;
-                background-color: #34c84a;
-            }
-
-            // $socialMediaColors: 1 #fc5753, 2 #fdbb40, 3 #34c84a;
-
-            // @each $color in $socialMediaColors {
-            //     .calc-displays-top-color:nth-child(#{nth($color, 1)}) {
-            //         background-color: nth($color, 2);
-            //         @include bounce;
-            //     }
-            // }
         }
     }
 

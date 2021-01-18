@@ -30,7 +30,7 @@ const calculator = function() {
         } else if (display.value == "0" && insertNum != 0) {
             formula.value += insertNum;
             display.value = insertNum;
-            }
+        }
         calculated = false;
         start = 0;
     }
@@ -49,9 +49,9 @@ const calculator = function() {
         formula.value = previousAns+op;
         } else if (Number(origin) != NaN) {
             formula.value += op;
-            } else if (op = "-" && /[+/*]/.test(lastChar) == true) {
+        } else if (op = "-" && /[+/*]/.test(lastChar) == true) {
             formula.value += op;           
-            }
+        }
             calculated = false;
             start += 1;
         }
@@ -118,7 +118,7 @@ const calculator = function() {
         previousAns = answer.toString();
     }
 
-    const back = function(e) {
+    const back = function() {
         if (display.value != "0" && formula.value != "") {
             if (display.value.length == 1 && formula.value.length == 1){
                 formula.value = "";
@@ -133,16 +133,17 @@ const calculator = function() {
     // Actions with the keyboard
     const numberKey = function(e) {
         // Maybe do it with a switch case
-        if(e.key == '1' || e.key == '2' || e.key == '3' || e.key == '4' || 
+        if (e.key == '1' || e.key == '2' || e.key == '3' || e.key == '4' || 
         e.key == '5' || e.key == '6' || e.key == '7' || e.key == '8' ||
-        e.key == '9' || e.key == '0' || e.key == '.') insert(e.key);
-        if(e.key == '/' || e.key == '*' || e.key == '-' || e.key == '+') operatorOf(e.key);
+        e.key == '9' || e.key == '0') insert(e.key);
+        if (e.key == '/' || e.key == '*' || e.key == '-' || e.key == '+') operatorOf(e.key);
+        if (e.key == '.') decimalOf();
         if (e.key == '%') percentOf();        
-        if(e.key == 'Enter') equalOf();
+        if (e.key == 'Enter') equalOf();
         if (e.key == 'Backspace') back();
         if (e.key == '_') negativeNumber();
     }
-
+    
     document.addEventListener('keydown', numberKey);
     // Actions by Dom
     number.forEach(btn => btn.addEventListener('click', insertDom)); 

@@ -39,17 +39,17 @@ img {
       display: flex;
       justify-content: space-around;
       align-items: center; }
-      .calc-displays-top-color .color-1 {
+      .calc-displays-top-color .bounce-color:nth-child(1) {
         height: 55%;
         width: 18%;
         border-radius: 50%;
         background-color: #fc5753; }
-      .calc-displays-top-color .color-2 {
+      .calc-displays-top-color .bounce-color:nth-child(2) {
         height: 55%;
         width: 18%;
         border-radius: 50%;
         background-color: #fdbb40; }
-      .calc-displays-top-color .color-3 {
+      .calc-displays-top-color .bounce-color:nth-child(3) {
         height: 55%;
         width: 18%;
         border-radius: 50%;
