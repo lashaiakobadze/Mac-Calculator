@@ -31,13 +31,12 @@
                 background-color: #34c84a;
             }
 
-            
             // $socialMediaColors: 1 #fc5753, 2 #fdbb40, 3 #34c84a;
 
             // @each $color in $socialMediaColors {
-            //     .calc-displays-top-color:nth-child(#{nth($color, 1)}) div{
+            //     .calc-displays-top-color:nth-child(#{nth($color, 1)}) {
             //         background-color: nth($color, 2);
-            //          @include bounce;
+            //         @include bounce;
             //     }
             // }
         }
